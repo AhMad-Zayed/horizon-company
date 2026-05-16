@@ -1,0 +1,262 @@
+/* Isolated Scoped CSS for Payload Custom Dashboard & AtlaHub Branding */
+
+/* ─── 1. GLOBAL THEME PROPERTY OVERRIDES ─────────────────────────────────── */
+:root,
+html,
+body,
+.payload {
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+* {
+  font-family: var(--font-body) !important;
+}
+
+/* Light Mode Overrides */
+[data-theme="light"],
+html[data-theme="light"],
+body[data-theme="light"],
+.payload[data-theme="light"] {
+  --theme-bg: #fafafa !important;
+  --theme-elevation-50: #f4f4f5 !important;
+  --theme-elevation-100: #e4e4e7 !important;
+  --theme-elevation-200: #d4d4d8 !important;
+  --theme-elevation-500: #71717a !important;
+  --theme-elevation-800: #27272a !important;
+  --theme-elevation-900: #18181b !important;
+  --theme-elevation-1000: #09090b !important;
+  color: #18181b !important;
+  background-color: #fafafa !important;
+}
+
+/* Dark Mode Overrides */
+[data-theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+.payload[data-theme="dark"] {
+  --theme-bg: #09090b !important;
+  --theme-elevation-50: #18181b !important;
+  --theme-elevation-100: #27272a !important;
+  --theme-elevation-200: #3f3f46 !important;
+  --theme-elevation-500: #a1a1aa !important;
+  --theme-elevation-800: #e4e4e7 !important;
+  --theme-elevation-900: #f4f4f5 !important;
+  --theme-elevation-1000: #ffffff !important;
+  color: #f4f4f5 !important;
+  background-color: #09090b !important;
+}
+
+/* ─── 2. CRIMSON / NEON RED INTERACTIVE ACCENTS ──────────────────────────── */
+.btn--style-primary,
+.btn--style-primary:active,
+.btn--style-primary:focus,
+.nav__link--active,
+.checkbox__input:checked + .checkbox__icon,
+.radio-input:checked + .radio-icon,
+.step-nav a:hover,
+.payload .btn--style-primary {
+  background-color: #ef4444 !important;
+  border-color: #dc2626 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25) !important;
+}
+
+.btn--style-primary:hover,
+.payload .btn--style-primary:hover {
+  background-color: #dc2626 !important;
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.35) !important;
+}
+
+.nav__link:hover {
+  color: #ef4444 !important;
+  background-color: rgba(239, 68, 68, 0.1) !important;
+  border-radius: 0.5rem !important;
+}
+
+*:focus-visible {
+  outline: 2px solid #ef4444 !important;
+  outline-offset: 2px !important;
+}
+
+/* ─── 3. DATA TABLES & CONTROLS PERFECTION ───────────────────────────────── */
+.collection-list table,
+.table,
+.th,
+.td,
+.cell {
+  padding: 0.875rem 1.25rem !important;
+  vertical-align: middle !important;
+  border-bottom: 1px solid var(--theme-elevation-100) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+
+.collection-list__table tr:hover {
+  background-color: var(--theme-elevation-50) !important;
+}
+
+.search-filter input,
+.input,
+.payload input[type="text"],
+.payload input[type="search"] {
+  padding: 0.75rem 1rem !important;
+  border-radius: 0.5rem !important;
+  border: 1px solid var(--theme-elevation-200) !important;
+  background-color: var(--theme-bg) !important;
+  color: var(--theme-elevation-900) !important;
+}
+
+.search-filter input:focus,
+.input:focus {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
+}
+
+/* ─── 4. CUSTOM ADMIN CONTAINER & DASHBOARD STYLES ───────────────────────── */
+.custom-admin-container {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: #f4f4f5;
+  background: transparent;
+  padding: 1.5rem;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+@media (min-width: 1024px) {
+  .admin-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .admin-col-2 {
+    grid-column: span 2 / span 2;
+  }
+  .admin-col-1 {
+    grid-column: span 1 / span 1;
+  }
+}
+
+.admin-card {
+  background-color: rgba(24, 24, 27, 0.75);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(63, 63, 70, 0.6);
+  border-radius: 1rem;
+  padding: 1.75rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+}
+
+.admin-banner {
+  background: linear-gradient(135deg, #09090b 0%, #18181b 100%);
+  border: 1px solid rgba(63, 63, 70, 0.5);
+  border-radius: 1.25rem;
+  padding: 2.25rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+.admin-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 0.75rem;
+  border-bottom: 1px solid rgba(63, 63, 70, 0.4);
+  transition: background-color 0.2s ease;
+}
+.admin-row:last-child {
+  border-bottom: none;
+}
+.admin-row:hover {
+  background-color: rgba(63, 63, 70, 0.3);
+  border-radius: 0.5rem;
+}
+
+.admin-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.675rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.admin-pill-green {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+.admin-pill-red {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+.admin-pill-zinc {
+  background-color: rgba(39, 39, 42, 0.8);
+  color: #e4e4e7;
+  border: 1px solid rgba(63, 63, 70, 0.8);
+}
+
+/* ─── 5. LOGIN SCREEN CUSTOMIZATION & GLASSMORPHISM ──────────────────────── */
+.template-login,
+.template-minimal,
+.payload__login,
+body:has(.template-minimal),
+html:has(.template-minimal),
+body:has(.template-login),
+html:has(.template-login) {
+  background: radial-gradient(circle at 50% 50%, #111115 0%, #040406 100%) !important;
+  background-color: #040406 !important;
+  min-height: 100vh !important;
+  color: #f4f4f5 !important;
+}
+
+.template-login form,
+.template-login .form-wrap,
+.template-minimal form,
+.template-minimal .form-wrap,
+.template-minimal .card,
+.template-minimal > div > div,
+.payload__login form,
+.step-login form,
+.payload__login .card,
+.template-login .step-login,
+.payload__login__wrap > div {
+  background: rgba(13, 13, 17, 0.75) !important;
+  backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8) !important;
+  padding: 3.5rem 3rem !important;
+  max-width: 480px !important;
+  margin: 0 auto !important;
+  color: #f4f4f5 !important;
+}
+
+.template-minimal label,
+.template-minimal h1,
+.template-minimal h2 {
+  color: #ffffff !important;
+}
+
+.template-minimal input[type="text"],
+.template-minimal input[type="email"],
+.template-minimal input[type="password"],
+.template-minimal input {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  padding: 0.875rem 1rem !important;
+}
+
+.template-minimal input:focus {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25) !important;
+}
+
+

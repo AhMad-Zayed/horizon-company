@@ -74,6 +74,7 @@ export interface Config {
     partners: Partner;
     services: Service;
     'contact-messages': ContactMessage;
+    'visitor-logs': VisitorLog;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -88,6 +89,7 @@ export interface Config {
     partners: PartnersSelect<false> | PartnersSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
     'contact-messages': ContactMessagesSelect<false> | ContactMessagesSelect<true>;
+    'visitor-logs': VisitorLogsSelect<false> | VisitorLogsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -133,6 +135,9 @@ export interface UserAuthOperations {
  */
 export interface User {
   id: number;
+  twoFactorEnabled?: boolean | null;
+  twoFactorSecret?: string | null;
+  twoFactorSetupComplete?: boolean | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -245,6 +250,20 @@ export interface ContactMessage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "visitor-logs".
+ */
+export interface VisitorLog {
+  id: number;
+  ip: string;
+  country: string;
+  countryCode: string;
+  browser: string;
+  timestamp: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -294,6 +313,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'contact-messages';
         value: number | ContactMessage;
+      } | null)
+    | ({
+        relationTo: 'visitor-logs';
+        value: number | VisitorLog;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -342,6 +365,9 @@ export interface PayloadMigration {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  twoFactorEnabled?: T;
+  twoFactorSecret?: T;
+  twoFactorSetupComplete?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -438,6 +464,19 @@ export interface ContactMessagesSelect<T extends boolean = true> {
   serviceOfInterest?: T;
   message?: T;
   status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "visitor-logs_select".
+ */
+export interface VisitorLogsSelect<T extends boolean = true> {
+  ip?: T;
+  country?: T;
+  countryCode?: T;
+  browser?: T;
+  timestamp?: T;
   updatedAt?: T;
   createdAt?: T;
 }

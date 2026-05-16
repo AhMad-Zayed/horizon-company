@@ -12,6 +12,7 @@ import { Clients } from './collections/Clients'
 import { Partners } from './collections/Partners'
 import { Services } from './collections/Services'
 import { ContactMessages } from './collections/ContactMessages'
+import { VisitorLogs } from './collections/VisitorLogs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -38,12 +39,28 @@ export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
   admin: {
     user: Users.slug,
+    components: {
+      graphics: {
+        Logo: './components/admin/AdminLogo#AdminLogo',
+      },
+      afterNav: [
+        './components/admin/AtlaHubFooter#AtlaHubFooter',
+      ],
+      views: {
+        dashboard: {
+          Component: './components/admin/CustomDashboard#CustomDashboard',
+        },
+        login: {
+          Component: './components/admin/CustomLogin#CustomLogin',
+        },
+      },
+    },
     importMap: {
       baseDir: path.resolve(__dirname),
       importMapFile: path.resolve(__dirname, 'app/(payload)/admin/importMap.js'),
     },
   },
-  collections: [Users, Media, HeroSlides, Clients, Partners, Services, ContactMessages],
+  collections: [Users, Media, HeroSlides, Clients, Partners, Services, ContactMessages, VisitorLogs],
   editor: lexicalEditor(),
   secret: payloadSecret,
   typescript: {

@@ -10,6 +10,7 @@ import { WhyUsSection } from '@/components/WhyUsSection';
 import { ClientsPortfolio } from '@/components/ClientsPortfolio';
 import { ContactForm } from '@/components/ContactForm';
 import { Footer } from '@/components/Footer';
+import { VisitorTracker } from '@/components/VisitorTracker';
 
 export const revalidate = 60;
 
@@ -49,6 +50,7 @@ export default async function Page() {
 
   return (
     <main className="w-full relative overflow-hidden bg-white dark:bg-[#09090B] text-zinc-900 dark:text-zinc-100 transition-colors">
+      <VisitorTracker />
       <Navbar />
 
       {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
