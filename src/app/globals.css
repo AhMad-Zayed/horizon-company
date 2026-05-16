@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  --brand-red: #E50914;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F4F4F5;
+  --text-main: #18181B;
+  --text-muted: #71717A;
+  --border-glass: rgba(0, 0, 0, 0.08);
+  --bg-glass: rgba(0, 0, 0, 0.02);
+  --glass-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+}
+
+.dark {
+  --brand-red: #E50914;
+  --bg-primary: #09090B;
+  --bg-secondary: #0D0D11;
+  --text-main: #E4E4E7;
+  --text-muted: #A1A1AA;
+  --border-glass: rgba(255, 255, 255, 0.05);
+  --bg-glass: rgba(255, 255, 255, 0.02);
+  --glass-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Smooth Scrolling */
+html { scroll-behavior: smooth; }
+
+/* Infinite Marquee */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+  display: flex;
+  width: 200%;
+}
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Ambient Background Mesh */
+.bg-mesh {
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(353,100%,46%,0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(240,20%,10%,1) 0px, transparent 50%);
+}
+:root:not(.dark) .bg-mesh, .light .bg-mesh {
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(353,100%,46%,0.06) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(240,10%,94%,1) 0px, transparent 50%);
+}
+
+/* Glassmorphism Card */
+.glass-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.4s ease;
+}
+.glass-card:hover {
+  border-color: rgba(229, 9, 20, 0.4);
+  box-shadow: 0 0 30px rgba(229, 9, 20, 0.1), inset 0 0 20px rgba(229, 9, 20, 0.05);
+  transform: translateY(-5px);
+}
+
+/* Abstract Grid */
+.bg-grid {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+:root:not(.dark) .bg-grid, .light .bg-grid {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+/* Text Gradient */
+.text-gradient {
+  background: linear-gradient(to right, #ffffff, #a1a1aa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+:root:not(.dark) .text-gradient, .light .text-gradient {
+  background: linear-gradient(to right, #18181B, #52525B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.text-gradient-red {
+  background: linear-gradient(to right, #ff4b4b, #E50914);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Light mode: slightly deeper red gradient for contrast on white backgrounds */
+:root:not(.dark) .text-gradient-red, .light .text-gradient-red {
+  background: linear-gradient(to right, #E50914, #B91C1C);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Ensure background-clip is applied on .text-gradient too */
+.text-gradient {
+  background-clip: text;
+}
+
