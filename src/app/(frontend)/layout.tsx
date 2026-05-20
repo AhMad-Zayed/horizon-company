@@ -10,8 +10,37 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Horizon Intelligent Technology | Enterprise Infrastructure",
-  description: "Transforming enterprise infrastructure with sovereign IT solutions, high-end cybersecurity, robust wireless backhaul, and mission-critical communications since 2010.",
+  title: "Horizon Smart Solutions | أفق الحلول الذكية | Sovereign Enterprise Infrastructure & Cybersecurity",
+  description: "Elite turnkey IT engineering & security solutions in Palestine. Specializing in mission-critical networks, custom datacenters, corporate VoIP, and high-end CCTV infrastructure. حلول هندسية متكاملة، شبكات اتصالات حرجية، بنى تحتية متطورة لمراكز البيانات وأنظمة الرقابة الذكية والمنشآت السيادية.",
+  keywords: [
+    "Horizon Smart Solutions", "أفق الحلول الذكية", "Enterprise Infrastructure Palestine", "بنية تحتية للمنشآت",
+    "Cybersecurity Ramallah", "الأمن السيبراني فلسطين", "VoIP Networks", "شبكات الاتصالات المؤسسية",
+    "CCTV Automation", "أنظمة المراقبة الذكية", "Datacenters", "مراكز البيانات", "Sovereign Networks", "المعدات السيادية"
+  ],
+  alternates: {
+    canonical: 'https://horizon-ss.com',
+    languages: {
+      'en-US': 'https://horizon-ss.com',
+      'ar-PS': 'https://horizon-ss.com',
+    },
+  },
+  openGraph: {
+    title: "Horizon Smart Solutions | أفق الحلول الذكية",
+    description: "Elite turnkey IT engineering & security solutions in Palestine. حلول هندسية متكاملة، شبكات اتصالات حرجية، بنى تحتية متطورة لمراكز البيانات.",
+    url: 'https://horizon-ss.com',
+    siteName: 'Horizon Smart Solutions',
+    images: [
+      {
+        url: '/media/hero-bg.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Horizon Smart Solutions preview image',
+      }
+    ],
+    locale: 'en_US',
+    alternateLocale: ['ar_PS'],
+    type: 'website',
+  },
 };
 
 export default function RootLayout({

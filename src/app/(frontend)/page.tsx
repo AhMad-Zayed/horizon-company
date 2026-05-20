@@ -48,8 +48,40 @@ export default async function Page() {
     clients = [];
   }
 
+  const bilingualJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Corporation",
+    "name": "Horizon Smart Solutions",
+    "alternateName": ["أفق الحلول الذكية", "Horizon Intelligent Technology"],
+    "url": "https://horizon-ss.com",
+    "logo": "https://horizon-ss.com/next.svg",
+    "description": {
+      "en": "Elite turnkey IT modernization, mission-critical datacenter infrastructure, corporate VoIP networks, and advanced CCTV deployments for Palestine's public and private institutions.",
+      "ar": "تحديث الأنظمة التقنية المتكاملة للمنشآت، بنى تحتية حرجية لمراكز البيانات، شبكات الاتصالات المؤسسية VoIP، وأنظمة الرقابة المتقدمة للمؤسسات العامة والخاصة في فلسطين."
+    },
+    "foundingDate": "2010",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ramallah",
+      "addressCountry": "PS"
+    },
+    "knowsAbout": [
+      "Enterprise Networking", "شبكات المنشآت الكبرى",
+      "Cybersecurity", "الأمن السيبراني",
+      "VoIP Telephony", "الاتصالات المؤسسية وVoIP",
+      "CCTV Surveillance", "أنظمة المراقبة والأتمتة",
+      "Sovereign Local Infrastructure", "البنية التحتية السيادية المحلية",
+      "Datacenters", "مراكز البيانات"
+    ]
+  };
+
   return (
-    <main className="w-full relative overflow-hidden bg-white dark:bg-[#09090B] text-zinc-900 dark:text-zinc-100 transition-colors">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(bilingualJsonLd) }}
+      />
+      <main className="w-full relative overflow-hidden bg-white dark:bg-[#09090B] text-zinc-900 dark:text-zinc-100 transition-colors">
       <VisitorTracker />
       <Navbar />
 
@@ -73,5 +105,6 @@ export default async function Page() {
 
       <Footer />
     </main>
+    </>
   );
 }
