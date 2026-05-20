@@ -21,12 +21,31 @@ export function Navbar() {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
+  const dropdownTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+
   useEffect(() => {
     setMounted(true);
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
+    };
   }, []);
+
+  const handleMouseEnter = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+      dropdownTimeoutRef.current = null;
+    }
+    setServicesDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setServicesDropdownOpen(false);
+    }, 150);
+  };
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -73,8 +92,8 @@ export function Navbar() {
           {/* Services Dropdown */}
           <div
             className="relative py-1"
-            onMouseEnter={() => setServicesDropdownOpen(true)}
-            onMouseLeave={() => setServicesDropdownOpen(false)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
             <button
               onClick={() => scrollTo('services')}
@@ -121,7 +140,7 @@ export function Navbar() {
 
         {/* Actions (Theme Toggle + CTA) */}
         <div className="hidden md:flex items-center gap-6">
-          {mounted && (
+          {mounted ? (
             <button
               onClick={toggleTheme}
               aria-label="Toggle Dark and Light Mode"
@@ -133,6 +152,8 @@ export function Navbar() {
                 <Moon className="w-5 h-5 transition-transform duration-500 rotate-0 hover:-rotate-90 text-indigo-600" />
               )}
             </button>
+          ) : (
+            <div className="w-[42px] h-[42px] rounded-full bg-zinc-100 dark:bg-zinc-800/80 border border-black/5 dark:border-white/5 animate-pulse" />
           )}
 
           <button
@@ -145,7 +166,7 @@ export function Navbar() {
 
         {/* Mobile controls */}
         <div className="flex items-center gap-4 md:hidden">
-          {mounted && (
+          {mounted ? (
             <button
               onClick={toggleTheme}
               aria-label="Toggle Dark and Light Mode"
@@ -157,6 +178,8 @@ export function Navbar() {
                 <Moon className="w-5 h-5 text-indigo-600" />
               )}
             </button>
+          ) : (
+            <div className="w-[36px] h-[36px] rounded-full bg-zinc-100 dark:bg-zinc-800/80 animate-pulse" />
           )}
           <button
             className="text-zinc-900 dark:text-white p-1 cursor-pointer"

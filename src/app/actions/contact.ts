@@ -18,7 +18,7 @@ export async function submitContactForm(prevState: any, formData: FormData) {
 
     const payload = await getPayload({ config: configPromise });
 
-    await payload.create({
+    const newMessage = await payload.create({
       collection: 'contact-messages',
       data: {
         name,
@@ -31,7 +31,36 @@ export async function submitContactForm(prevState: any, formData: FormData) {
       },
     });
 
-    return { success: true, message: 'Thank you! Your inquiry has been successfully submitted. Our team will contact you within 1 hour.' };
+    const ticketId = `#HRZ-2026-${String(newMessage.id).toUpperCase()}`;
+
+    try {
+      await payload.sendEmail({
+        to: 'info@horizon-ss.com',
+        subject: `New Horizon Support Ticket: ${ticketId}`,
+        html: `
+          <div style="font-family: sans-serif; padding: 20px;">
+            <h2 style="color: #E50914;">New Support Ticket Received</h2>
+            <p><strong>Ticket ID:</strong> ${ticketId}</p>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+            <p><strong>Company:</strong> ${company}</p>
+            <p><strong>Service of Interest:</strong> ${serviceOfInterest}</p>
+            <hr style="border-top: 1px solid #eee;" />
+            <p><strong>Message:</strong></p>
+            <p style="white-space: pre-wrap;">${message}</p>
+          </div>
+        `,
+      });
+    } catch (emailError) {
+      console.warn('Failed to send email notification:', emailError);
+    }
+
+    return {
+      success: true,
+      message: 'Thank you! Your inquiry has been successfully submitted. Our team will contact you within 1 hour.',
+      ticketId,
+    };
   } catch (error: any) {
     console.error('Error submitting contact form:', error);
     return { success: false, error: 'An unexpected error occurred while submitting your message. Please try again or contact us directly at info@horizon-ss.com.' };

@@ -21,11 +21,33 @@ export async function POST(req: Request) {
 
     if (ip !== '127.0.0.1' && ip !== '::1') {
       try {
-        const geoRes = await fetch(`https://ipapi.co/${ip}/json/`, { signal: AbortSignal.timeout(3000) })
-        if (geoRes.ok) {
-          const geoData = await geoRes.json()
-          if (geoData.country_name) country = geoData.country_name
-          if (geoData.country) countryCode = geoData.country
+        // Query database to see if we have logged this IP before to reuse cached geolocation
+        const cachedLogs = await payload.find({
+          collection: 'visitor-logs',
+          where: {
+            ip: { equals: ip },
+          },
+          limit: 1,
+        })
+
+        if (cachedLogs.docs && cachedLogs.docs.length > 0) {
+          const cached = cachedLogs.docs[0]
+          if (cached.country && cached.country !== 'Unknown') {
+            country = cached.country
+          }
+          if (cached.countryCode && cached.countryCode !== 'UN') {
+            countryCode = cached.countryCode
+          }
+        }
+
+        // If not cached, fetch from external provider with 2000ms timeout
+        if (country === 'Unknown' || countryCode === 'UN') {
+          const geoRes = await fetch(`https://ipapi.co/${ip}/json/`, { signal: AbortSignal.timeout(2000) })
+          if (geoRes.ok) {
+            const geoData = await geoRes.json()
+            if (geoData.country_name) country = geoData.country_name
+            if (geoData.country) countryCode = geoData.country
+          }
         }
       } catch (_) {}
     } else {

@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* 
+ * CRITICAL: Force explicit class selector strategy for Tailwind CSS v4.
+ * This replaces the v3 `darkMode: 'class'` configuration and ensures
+ * Firefox and Chrome remain 100% in sync with next-themes.
+ */
+@custom-variant dark (&:where(.dark, .dark *));
 :root {
   --brand-red: #E50914;
   --bg-primary: #FFFFFF;

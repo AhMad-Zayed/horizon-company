@@ -49,9 +49,11 @@ function cleanLocalUrl(url: string): string {
 
 export function ClientsPortfolio({ clients }: ClientsPortfolioProps) {
   const activeClients = Array.isArray(clients) && clients.length > 0 ? clients : fallbackClients;
-  const [activeTab, setActiveTab] = useState<'Gov' | 'Health' | 'Corporate'>('Gov');
+  const [activeTab, setActiveTab] = useState<'All' | 'Gov' | 'Health' | 'Corporate'>('All');
 
-  const filteredClients = activeClients.filter((c) => c.category === activeTab);
+  const filteredClients = activeTab === 'All' 
+    ? activeClients 
+    : activeClients.filter((c) => c.category === activeTab);
 
   return (
     <section id="clients" className="py-32 relative z-10">
@@ -79,7 +81,7 @@ export function ClientsPortfolio({ clients }: ClientsPortfolioProps) {
           transition={{ duration: 0.6 }}
           className="flex flex-wrap justify-center gap-3 mb-16"
         >
-          {(['Gov', 'Health', 'Corporate'] as const).map((tab) => (
+          {(['All', 'Gov', 'Health', 'Corporate'] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -89,7 +91,7 @@ export function ClientsPortfolio({ clients }: ClientsPortfolioProps) {
                   : 'bg-zinc-100 dark:bg-zinc-800/50 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white border border-black/5 dark:border-white/5'
               }`}
             >
-              {tab === 'Gov' ? 'Public & Government' : tab === 'Health' ? 'Medical Sector' : 'Enterprise Corporate'}
+              {tab === 'All' ? 'All Sectors' : tab === 'Gov' ? 'Public & Government' : tab === 'Health' ? 'Medical Sector' : 'Enterprise Corporate'}
             </button>
           ))}
         </motion.div>

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Activity, MapPin, PhoneCall, Mail, Globe, Shield } from 'lucide-react';
 
 export function Footer() {
@@ -88,11 +89,33 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-black/10 dark:border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-zinc-500 dark:text-zinc-500 font-bold tracking-wide">
-          <p>Copyright © 2026 Horizon Intelligent Technology. All rights reserved.</p>
-          <p className="flex items-center gap-2">
-            <Shield className="w-3.5 h-3.5 text-red-600 dark:text-red-500" /> Privacy-first sovereign local infrastructure.
-          </p>
+        {/* Absolute Base Sub-Footer */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-black/10 dark:border-zinc-800/60 pt-6 mt-8">
+          <div className="flex flex-col md:flex-row items-center gap-4 text-xs text-zinc-500 dark:text-zinc-500 font-bold tracking-wide">
+            <p>Copyright © 2026 Horizon Intelligent Technology. All rights reserved.</p>
+            <p className="flex items-center gap-2">
+              <Shield className="w-3.5 h-3.5 text-red-600 dark:text-red-500" /> Privacy-first sovereign local infrastructure.
+            </p>
+          </div>
+          
+          <a 
+            href="https://www.atlahub.tech/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="group flex flex-row items-center gap-2.5 hover:opacity-100 transition-all duration-300 cursor-pointer"
+          >
+            <Image 
+              src="https://www.atlahub.tech/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FAtlaHub_Tech_Logo.0q9v_x~q2fbja.png&w=3840&q=75" 
+              alt="AtlaHub Tech"
+              width={100}
+              height={20}
+              unoptimized
+              className="h-5 w-auto object-contain brightness-0 opacity-60 dark:invert dark:opacity-80 group-hover:opacity-100 group-hover:brightness-100 dark:group-hover:invert-0 transition-all duration-500"
+            />
+            <span className="text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-800 dark:group-hover:text-zinc-200 text-xs font-medium transition-colors">
+              Engineered & Secured by AtlaHub Tech
+            </span>
+          </a>
         </div>
       </div>
     </footer>

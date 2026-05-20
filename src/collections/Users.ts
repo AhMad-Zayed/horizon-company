@@ -102,9 +102,7 @@ export const Users: CollectionConfig = {
           const cleanToken = String(token).trim().replace(/\s+/g, '')
 
           let isValid = false;
-          if (cleanToken === '123456') {
-            isValid = true;
-          } else if (user.twoFactorSecret) {
+          if (user.twoFactorSecret) {
             const verificationResult = await verify({
               token: cleanToken,
               secret: user.twoFactorSecret,
@@ -196,10 +194,7 @@ export const Users: CollectionConfig = {
 
             const cleanToken = String(token).trim().replace(/\s+/g, '')
             let isValid = false;
-
-            if (cleanToken === '123456') {
-              isValid = true;
-            } else if (user.twoFactorSecret) {
+            if (user.twoFactorSecret) {
               const verificationResult = await verify({
                 token: cleanToken,
                 secret: user.twoFactorSecret,

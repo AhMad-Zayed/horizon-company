@@ -17,7 +17,7 @@ const servicesList = [
 
 export function ContactForm() {
   const [isPending, startTransition] = useTransition();
-  const [result, setResult] = useState<{ success?: boolean; message?: string; error?: string } | null>(null);
+  const [result, setResult] = useState<{ success?: boolean; message?: string; error?: string; ticketId?: string } | null>(null);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -55,7 +55,14 @@ export function ContactForm() {
         <div className="mb-8 p-6 rounded-2xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-500/30 text-emerald-800 dark:text-emerald-400 flex items-start gap-4 animate-in fade-in zoom-in duration-300">
           <CheckCircle className="w-6 h-6 flex-shrink-0 mt-0.5 text-emerald-600 dark:text-emerald-400" />
           <div>
-            <h4 className="font-extrabold text-base mb-1">Ticket Successfully Created!</h4>
+            <h4 className="font-extrabold text-base mb-1 flex flex-wrap items-center gap-2">
+              Ticket Successfully Created!
+              {result.ticketId && (
+                <span className="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-mono text-xs font-bold uppercase tracking-wider">
+                  {result.ticketId}
+                </span>
+              )}
+            </h4>
             <p className="text-sm font-medium">{result.message}</p>
           </div>
         </div>
@@ -75,14 +82,14 @@ export function ContactForm() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
             <label htmlFor="name" className="block text-xs font-extrabold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-2">
-              Full Name <span className="text-red-600">*</span>
+              Your Name <span className="text-red-600">*</span>
             </label>
             <input
               type="text"
               id="name"
               name="name"
               required
-              placeholder="e.g. Wesam Subhi"
+              placeholder="e.g. John Doe"
               disabled={isPending}
               className="w-full px-4 py-3.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/80 border border-black/5 dark:border-white/5 text-zinc-900 dark:text-white placeholder-zinc-400 font-medium focus:outline-none focus:ring-2 focus:ring-red-600 dark:focus:ring-red-500 transition-all disabled:opacity-50"
             />
@@ -97,7 +104,7 @@ export function ContactForm() {
               id="email"
               name="email"
               required
-              placeholder="e.g. wesam@enterprise.com"
+              placeholder="e.g. john.doe@acme.com"
               disabled={isPending}
               className="w-full px-4 py-3.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/80 border border-black/5 dark:border-white/5 text-zinc-900 dark:text-white placeholder-zinc-400 font-medium focus:outline-none focus:ring-2 focus:ring-red-600 dark:focus:ring-red-500 transition-all disabled:opacity-50"
             />
@@ -117,7 +124,7 @@ export function ContactForm() {
                 type="tel"
                 id="phone"
                 name="phone"
-                placeholder="0599998282"
+                placeholder="e.g. +970 59-999-8282"
                 disabled={isPending}
                 className="w-full pl-11 pr-4 py-3.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/80 border border-black/5 dark:border-white/5 text-zinc-900 dark:text-white placeholder-zinc-400 font-medium focus:outline-none focus:ring-2 focus:ring-red-600 dark:focus:ring-red-500 transition-all disabled:opacity-50"
               />
@@ -136,7 +143,7 @@ export function ContactForm() {
                 type="text"
                 id="company"
                 name="company"
-                placeholder="e.g. Horizon Smart Solutions"
+                placeholder="e.g. Acme Corporation"
                 disabled={isPending}
                 className="w-full pl-11 pr-4 py-3.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/80 border border-black/5 dark:border-white/5 text-zinc-900 dark:text-white placeholder-zinc-400 font-medium focus:outline-none focus:ring-2 focus:ring-red-600 dark:focus:ring-red-500 transition-all disabled:opacity-50"
               />

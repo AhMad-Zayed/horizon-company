@@ -18,14 +18,12 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 // ─── Environment Variable Validation ─────────────────────────────────────────
-const INSECURE_DEFAULT_SECRET = '0123456789abcdef0123456789abcdef'
-const payloadSecret = process.env.PAYLOAD_SECRET ?? INSECURE_DEFAULT_SECRET
+const payloadSecret = process.env.PAYLOAD_SECRET
 
-if (payloadSecret === INSECURE_DEFAULT_SECRET) {
-  console.warn(
-    '\n[Horizon WARNING] PAYLOAD_SECRET is using the insecure default value.\n' +
-    'Set a strong, random secret in your .env file before deploying to production:\n' +
-    'PAYLOAD_SECRET=<your-random-64-char-string>\n'
+if (!payloadSecret) {
+  throw new Error(
+    'CRITICAL FAILURE: PAYLOAD_SECRET environment variable is missing!\n' +
+    'Please set a secure PAYLOAD_SECRET in your .env file before running the application.'
   )
 }
 
