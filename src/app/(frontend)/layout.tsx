@@ -10,6 +10,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://horizon-ss.com'),
   title: "Horizon ( Intelligent Technology / Smart Solutions )",
   description: "Elite turnkey IT engineering & security solutions in Palestine. Specializing in mission-critical networks, custom datacenters, corporate VoIP, and high-end CCTV infrastructure. حلول هندسية متكاملة، شبكات اتصالات حرجية، بنى تحتية متطورة لمراكز البيانات وأنظمة الرقابة الذكية والمنشآت السيادية.",
   keywords: [
