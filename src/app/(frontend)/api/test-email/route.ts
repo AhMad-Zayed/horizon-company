@@ -1,13 +1,31 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+// Force Node.js runtime (not Edge runtime)
+export const runtime = 'nodejs';
+
 export async function POST(req: NextRequest) {
-  // Only allow in development mode
+  // 1. Allow only in development mode
   if (process.env.NODE_ENV !== 'development') {
     return NextResponse.json(
-      { success: false, error: 'Unauthorized: Endpoint only available in development mode (NODE_ENV=development)' },
+      { success: false, error: 'Forbidden: Endpoint only available in development mode (NODE_ENV=development)' },
       { status: 403 }
     );
+  }
+
+  // 2. Optional internal secret token check for extra security
+  const internalSecret = process.env.INTERNAL_SECRET_TOKEN;
+  if (internalSecret) {
+    const tokenHeader = req.headers.get('x-secret-token');
+    const { searchParams } = new URL(req.url);
+    const tokenParam = searchParams.get('token');
+
+    if (tokenHeader !== internalSecret && tokenParam !== internalSecret) {
+      return NextResponse.json(
+        { success: false, error: 'Unauthorized: Invalid or missing secret token' },
+        { status: 401 }
+      );
+    }
   }
 
   try {

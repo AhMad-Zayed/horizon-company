@@ -2,7 +2,6 @@ import { buildConfig } from 'payload'
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
-import nodemailer from 'nodemailer'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
@@ -36,31 +35,6 @@ if (databaseUri.startsWith('file:./')) {
 }
 
 const isSmtpConfigured = !!process.env.SMTP_HOST;
-
-// Background Transporter Verification
-if (isSmtpConfigured) {
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: parseInt(process.env.SMTP_PORT || '587'),
-    secure: process.env.SMTP_SECURE === 'true',
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASSWORD,
-    },
-    connectionTimeout: parseInt(process.env.SMTP_CONNECTION_TIMEOUT || '10000'),
-    greetingTimeout: parseInt(process.env.SMTP_GREETING_TIMEOUT || '10000'),
-    socketTimeout: parseInt(process.env.SMTP_SOCKET_TIMEOUT || '15000'),
-  });
-
-  transporter.verify()
-    .then(() => {
-      console.log('[Horizon SMTP] Mail transporter verified successfully.');
-    })
-    .catch((err: unknown) => {
-      const msg = err instanceof Error ? err.message : String(err)
-      console.error('[Horizon SMTP] Mail transporter verification failed:', msg);
-    });
-}
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
