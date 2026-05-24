@@ -22,7 +22,7 @@ export function AboutSection() {
           >
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 dark:bg-red-500/15 border border-red-500/20 text-red-600 dark:text-red-500 text-sm font-extrabold tracking-wide">
               <Award className="w-4 h-4" />
-              Horizon Intelligent Technology
+              Horizon ( Intelligent Technology / Smart Solutions )
             </div>
             
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-[1.15]">
@@ -32,7 +32,7 @@ export function AboutSection() {
 
             <div className="space-y-6 text-zinc-600 dark:text-zinc-300 font-medium leading-relaxed text-lg">
               <p>
-                Horizon Smart Solutions Company was formed in 2010 with a clear vision to provide elite IT solutions and sovereign equipment. Our qualified team implements complex turnkey projects including enterprise networks, mission-critical data centers, VoIP solutions, information security, programming, and long-range wireless backhaul.
+                Horizon ( Intelligent Technology / Smart Solutions ) was formed in 2010 with a clear vision to provide elite IT solutions and sovereign equipment. Our qualified team implements complex turnkey projects including enterprise networks, mission-critical data centers, VoIP solutions, information security, programming, and long-range wireless backhaul.
               </p>
               <p>
                 We recruit first-class engineers who specialize in seamless integration, 24/7 maintenance, active support, advanced technical consulting, and precision installation. We maintain and modernize IT infrastructure to solve specific operational bottlenecks before they impact business continuity.

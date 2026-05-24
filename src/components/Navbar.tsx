@@ -79,15 +79,18 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
-        <div className="flex items-center gap-2 cursor-pointer group" onClick={() => scrollTo('home')}>
+        <div className="flex items-center gap-3.5 cursor-pointer group" onClick={() => scrollTo('home')}>
           <Image
             src="/horizon-logo.png"
             alt="Horizon Logo"
-            width={160}
-            height={40}
-            className="h-10 w-auto object-contain dark:brightness-110"
+            width={120}
+            height={36}
+            className="h-9 w-auto object-contain dark:brightness-110"
             priority
           />
+          <span className="hidden md:inline-block text-sm font-extrabold tracking-tight text-zinc-900 dark:text-white border-l border-zinc-300 dark:border-zinc-700 pl-3">
+            Horizon ( Intelligent Technology / Smart Solutions )
+          </span>
         </div>
 
         {/* Desktop Links */}

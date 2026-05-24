@@ -28,7 +28,7 @@ export function Footer() {
               />
             </div>
             <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed max-w-sm mb-6 font-medium">
-              We transform businesses of most major sectors with powerful and adaptable digital solutions that satisfy the needs of today. Horizon Intelligent Technology provides customized communications, enterprise network integrations, and advanced security solutions since 2010.
+              We transform businesses of most major sectors with powerful and adaptable digital solutions that satisfy the needs of today. Horizon ( Intelligent Technology / Smart Solutions ) provides customized communications, enterprise network integrations, and advanced security solutions since 2010.
             </p>
             {/* Social Links Row */}
             <div className="flex items-center gap-3.5 mb-6">
@@ -129,7 +129,7 @@ export function Footer() {
         {/* Absolute Base Sub-Footer */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-black/10 dark:border-zinc-800/60 pt-6 mt-8">
           <div className="flex flex-col md:flex-row items-center gap-4 text-xs text-zinc-500 dark:text-zinc-500 font-bold tracking-wide">
-            <p>Copyright © 2026 Horizon Intelligent Technology. All rights reserved.</p>
+            <p>Copyright © 2026 Horizon ( Intelligent Technology / Smart Solutions ). All rights reserved.</p>
             <p className="flex items-center gap-2">
               <Shield className="w-3.5 h-3.5 text-red-600 dark:text-red-500" /> Privacy-first sovereign local infrastructure.
             </p>
