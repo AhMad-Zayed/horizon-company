@@ -103,11 +103,12 @@ export function Footer() {
                 <MapPin className="w-5 h-5 text-red-600 dark:text-red-500 shrink-0 mt-0.5" />
                 <span>15 Almahad st,<br />Ramallah, State Of Palestine</span>
               </li>
-              <li className="flex items-center gap-3.5">
-                <PhoneCall className="w-5 h-5 text-red-600 dark:text-red-500 shrink-0" />
-                <div className="flex flex-col">
-                  <span>02-3752111</span>
-                  <span>0599998282 / 0522586177</span>
+              <li className="flex items-start gap-3.5">
+                <PhoneCall className="w-5 h-5 text-red-600 dark:text-red-500 shrink-0 mt-1" />
+                <div className="flex flex-col gap-1">
+                  <a href="tel:023752111" className="hover:text-red-500 transition-colors">02-3752111</a>
+                  <a href="tel:0599998282" className="hover:text-red-500 transition-colors">0599998282</a>
+                  <a href="tel:0522586177" className="hover:text-red-500 transition-colors">0522586177</a>
                 </div>
               </li>
               <li className="flex items-center gap-3.5">
