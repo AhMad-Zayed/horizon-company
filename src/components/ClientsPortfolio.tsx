@@ -65,6 +65,9 @@ export function ClientsPortfolio({ clients }: ClientsPortfolioProps) {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
+          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-red-500/10 dark:bg-red-500/15 border border-red-500/20 text-red-600 dark:text-red-500 text-sm font-extrabold tracking-wide mb-6">
+            Horizon ( Intelligent Technology / Smart Solutions )
+          </div>
           <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-zinc-900 dark:text-white">
             Trusted by <span className="text-red-600 dark:text-red-500">Industry Leaders</span>
           </h2>
