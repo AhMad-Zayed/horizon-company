@@ -10,13 +10,16 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Horizon Smart Solutions | أفق الحلول الذكية | Sovereign Enterprise Infrastructure & Cybersecurity",
+  title: "Horizon ( Intelligent Technology / Smart Solutions )",
   description: "Elite turnkey IT engineering & security solutions in Palestine. Specializing in mission-critical networks, custom datacenters, corporate VoIP, and high-end CCTV infrastructure. حلول هندسية متكاملة، شبكات اتصالات حرجية، بنى تحتية متطورة لمراكز البيانات وأنظمة الرقابة الذكية والمنشآت السيادية.",
   keywords: [
     "Horizon Smart Solutions", "أفق الحلول الذكية", "Enterprise Infrastructure Palestine", "بنية تحتية للمنشآت",
     "Cybersecurity Ramallah", "الأمن السيبراني فلسطين", "VoIP Networks", "شبكات الاتصالات المؤسسية",
     "CCTV Automation", "أنظمة المراقبة الذكية", "Datacenters", "مراكز البيانات", "Sovereign Networks", "المعدات السيادية"
   ],
+  icons: {
+    icon: '/horizon-logo.png',
+  },
   alternates: {
     canonical: 'https://horizon-ss.com',
     languages: {
@@ -25,7 +28,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Horizon Smart Solutions | أفق الحلول الذكية",
+    title: "Horizon ( Intelligent Technology / Smart Solutions )",
     description: "Elite turnkey IT engineering & security solutions in Palestine. حلول هندسية متكاملة، شبكات اتصالات حرجية، بنى تحتية متطورة لمراكز البيانات.",
     url: 'https://horizon-ss.com',
     siteName: 'Horizon Smart Solutions',

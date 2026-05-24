@@ -6,12 +6,11 @@ export function AdminLogo() {
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', margin: '1rem 0 2rem 0', fontFamily: 'system-ui, -apple-system, sans-serif', textAlign: 'center' }}>
       {/* Horizon Logo Header */}
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center' }}>
-        <span style={{ fontSize: '2.75rem', fontWeight: '900', color: '#ffffff', letterSpacing: '-0.04em', lineHeight: '1' }}>
-          Horizon
-        </span>
-        <span style={{ fontSize: '2.75rem', fontWeight: '900', color: '#e50914', lineHeight: '1', textShadow: '0 0 20px rgba(229, 9, 20, 0.8)' }}>
-          .
-        </span>
+        <img
+          src="/horizon-logo.png"
+          alt="Horizon Logo"
+          style={{ height: '48px', width: 'auto', objectFit: 'contain' }}
+        />
       </div>
 
       {/* Micro-text */}

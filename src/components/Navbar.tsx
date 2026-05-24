@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Activity, Menu, X, Sun, Moon, ChevronDown, Server, ShieldCheck, Network, Phone, Wifi, Video, Headphones } from 'lucide-react';
+import Image from 'next/image';
+import { Menu, X, Sun, Moon, ChevronDown, Server, ShieldCheck, Network, Phone, Wifi, Video, Headphones } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 const dropdownServices = [
@@ -79,12 +80,14 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center gap-2 cursor-pointer group" onClick={() => scrollTo('home')}>
-          <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-red-700 rounded flex items-center justify-center shadow-[0_0_15px_rgba(229,9,20,0.3)] group-hover:shadow-[0_0_20px_rgba(229,9,20,0.6)] transition-all">
-            <Activity className="text-white w-5 h-5" />
-          </div>
-          <span className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white transition-colors">
-            Horizon<span className="text-red-500">.</span>
-          </span>
+          <Image
+            src="/horizon-logo.png"
+            alt="Horizon Logo"
+            width={160}
+            height={40}
+            className="h-10 w-auto object-contain dark:brightness-110"
+            priority
+          />
         </div>
 
         {/* Desktop Links */}
